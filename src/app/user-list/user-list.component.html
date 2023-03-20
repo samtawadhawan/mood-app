@@ -1,0 +1,12 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>User Messages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td *ngIf="(user.userMessage !== '' && user.userMessage !== null)">{{user.userMessage}}</td>
+        </tr>
+    </tbody>
+</table>
