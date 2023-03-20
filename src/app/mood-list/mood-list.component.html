@@ -1,0 +1,40 @@
+<h2>How are you feeling today?</h2>
+
+<body ng-controller="Ctrl" class="body">
+    <div class="container btn-group btn-Font btngrp" role="group" aria-label="Basic example">
+        <button type="button" [(ngModel)]="user.mood" name="happy_mood" class="btn btn-success md-raised"
+            (click)="open('Happy')" ngDefaultControl>Happy</button>
+        <button [(ngModel)]="user.mood" name="grumpy_mood" value='happy' type="button" class="btn btn-danger"
+            (click)="open('Grumpy')" ngDefaultControl>Grumpy</button>
+        <button [(ngModel)]="user.mood" name="meh_mood" value="Meh" type="button" class="btn btn-warning"
+            (click)="open('Meh')" ngDefaultControl>A bit
+            “meh”</button>
+        <button [(ngModel)]="user.mood" name="normal_mood" value="Normal" type="button" class="btn btn-info"
+            (click)="open('Normal')" ngDefaultControl>Just normal
+            really</button>
+        <button [(ngModel)]="user.mood" name="stressed_mood" value="Stressed" type="button" class="btn btn-primary"
+            (click)="open('Stressed')" ngDefaultControl>Stressed out – not a happy camper</button>
+    </div>
+
+    <div class="" aria-label="Basic example">
+        <label>Message[Optional]:</label>
+        <textarea [(ngModel)]="user.userMessage" maxlength="350" cols="60" class="textarea_margins"></textarea>
+    </div>
+    <div class="text-center" aria-label="Basic example">
+        <button type="button" class="btn btn-dark button_margin" aria-setsize="" (click)="onSubmit()">SUBMIT</button>
+
+
+        <div class="row" *ngIf="showMsg">
+            <div class="col-xs-6">
+                <p class="alert alert-success success_rating">
+                    <strong>Rating submitted Successfully!</strong>
+
+                </p>
+            </div>
+        </div>
+
+        <div class="container" *ngIf="display">
+            <app-user-list (messageEvent)="receiveMessage($event)"></app-user-list>
+            <app-doughnut-chart [users]="userList" *ngIf="userList"></app-doughnut-chart>
+
+        </div>
